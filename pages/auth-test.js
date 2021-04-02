@@ -2,15 +2,12 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import useHivesigner from "../components/useHivesigner";
-
-export default function Home() {
+export default function Auth() {
   const auth = useHivesigner();
   console.log(auth);
-
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
   };
-
   const logout = () => {
     let params = new URL(location).searchParams;
     const token =
@@ -19,7 +16,6 @@ export default function Home() {
     auth.client.removeAccessToken();
     console.log(auth.client);
   };
-
   const post = () => {
     const jsonMetadata = {
       tags: ["hive-152197", "coldbrew-dev"],
@@ -31,7 +27,7 @@ export default function Home() {
       "benny.blockchain",
       "sup-internet",
       "benny.blockchain",
-      "post4",
+      "post6",
       "Cold Brew Posting",
       "Test test test",
       json_metadata,
@@ -53,8 +49,8 @@ export default function Home() {
       <button onClick={login}>Log in</button>
       <button onClick={logout}>Log out</button>
       <button onClick={post}>Post</button>
-      <Link href="/auth-test">
-        <h1>Home</h1>
+      <Link href="/">
+        <h1>Test page</h1>
       </Link>
     </div>
   );
